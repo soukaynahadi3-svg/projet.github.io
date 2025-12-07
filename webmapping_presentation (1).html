@@ -1,0 +1,2050 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Web Mapping 2025 - Présentation Complète</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide {
+            background: white;
+            width: 92vw;
+            height: 92vh;
+            max-width: 1400px;
+            max-height: 787px;
+            border-radius: 20px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.4);
+            padding: 50px 70px;
+            display: none;
+            flex-direction: column;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: flex;
+            animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-header {
+            border-bottom: 5px solid #2a5298;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            color: #1e293b;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: #2a5298;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        h3 {
+            color: #475569;
+            font-size: 1.4em;
+            margin-top: 15px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        h4 {
+            color: #64748b;
+            font-size: 1.15em;
+            margin-top: 12px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        p, li {
+            color: #475569;
+            font-size: 1.05em;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .slide-content {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .slide-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .slide-content::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+
+        .slide-content::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 15px;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .box {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #2a5298;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .box-alt {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left-color: #f59e0b;
+        }
+
+        .box-success {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-left-color: #10b981;
+        }
+
+        .box-info {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left-color: #3b82f6;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #fbbf24 0%, #f59e0b 100%);
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-weight: 700;
+            color: #78350f;
+        }
+
+        .highlight-blue {
+            background: linear-gradient(120deg, #60a5fa 0%, #3b82f6 100%);
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(42,82,152,0.4);
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(42,82,152,0.6);
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: linear-gradient(135deg, #2a5298 0%, #7e22ce 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .title-slide {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .title-slide h1 {
+            font-size: 3.5em;
+            margin-bottom: 25px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-slide .subtitle {
+            font-size: 1.5em;
+            color: #e0e7ff;
+            margin: 20px 0 40px 0;
+        }
+
+        .authors {
+            margin-top: 50px;
+            color: #e0e7ff;
+            font-size: 1.15em;
+            line-height: 2;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95em;
+            background: white;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .metric {
+            display: inline-block;
+            background: linear-gradient(135deg, #2a5298 0%, #7e22ce 100%);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 5px;
+            font-size: 0.9em;
+            box-shadow: 0 2px 6px rgba(42,82,152,0.3);
+        }
+
+        .metric-success {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .metric-warning {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .chart-placeholder {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border: 2px dashed #cbd5e1;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            color: #64748b;
+            font-style: italic;
+            margin: 15px 0;
+        }
+
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .workflow-step {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .workflow-step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #2a5298 0%, #7e22ce 100%);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(42,82,152,0.4);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-card {
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .comparison-card.raw {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 3px solid #f59e0b;
+        }
+
+        .comparison-card.cog {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 3px solid #10b981;
+        }
+
+        .comparison-card h3 {
+            margin-top: 0;
+            font-size: 1.6em;
+        }
+
+        .performance-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .key-insight {
+            background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+            border-left: 5px solid #7e22ce;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+
+        strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Page de titre -->
+        <div class="slide active title-slide">
+            <div class="slide-content">
+                <h1>Projet Web Mapping 2025</h1>
+                <p class="subtitle">Visualisation et Traitement Avancé de Données Géospatiales</p>
+                <div class="authors">
+                    <p><strong>Réalisé par:</strong></p>
+                    <p>Nafia Kaoutar N°47 • Lemghari Rania N°45</p>
+                    <p>Hadioui Soukayna N°33 • Khalladi Mariame N°40</p>
+                    <p style="margin-top: 30px;"><strong>Encadré par:</strong> Professeur Hajji Hicham</p>
+                    <p style="margin-top: 30px;">Année universitaire 2025/2026</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Contexte et enjeux -->
+        <div class="slide">
+            <div class="slide-number">2/35</div>
+            <div class="slide-header">
+                <h2>Contexte et Enjeux du Web Mapping</h2>
+            </div>
+            <div class="slide-content">
+                <p>Le Web Mapping s'impose aujourd'hui comme un pilier fondamental de la géomatique moderne, transformant radicalement notre façon d'interagir avec l'information géographique.</p>
+                
+                <div class="two-column">
+                    <div class="box">
+                        <h3>Révolution numérique</h3>
+                        <ul>
+                            <li>Démocratisation de l'accès aux données spatiales</li>
+                            <li>Interactivité et visualisation en temps réel</li>
+                            <li>Intégration multi-sources et multi-échelles</li>
+                            <li>Collaboration et partage de connaissances</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="box box-alt">
+                        <h3>Défis techniques</h3>
+                        <ul>
+                            <li>Gestion de volumes massifs de données</li>
+                            <li>Optimisation des performances web</li>
+                            <li>Standardisation et interopérabilité</li>
+                            <li>Accessibilité et expérience utilisateur</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="key-insight">
+                    <strong>Enjeu central:</strong> Comment publier, traiter et visualiser efficacement des données géospatiales complexes dans un environnement web moderne tout en garantissant performance, précision et accessibilité?
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Objectifs du projet -->
+        <div class="slide">
+            <div class="slide-number">3/35</div>
+            <div class="slide-header">
+                <h2>Objectifs et Portée du Projet</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Vision globale</h3>
+                <p>Explorer les principales composantes du web géospatial en s'appuyant sur des cas d'usage concrets appliqués au contexte marocain.</p>
+
+                <div class="three-column">
+                    <div class="box box-info">
+                        <h4>Objectif 1</h4>
+                        <p><strong>Traitement distant</strong></p>
+                        <p>Implémenter un serveur WPS pour l'exécution de géotraitements via services web normalisés</p>
+                    </div>
+                    
+                    <div class="box box-info">
+                        <h4>Objectif 2</h4>
+                        <p><strong>Big Data climatique</strong></p>
+                        <p>Gérer et visualiser des données massives ERA5 avec interface interactive</p>
+                    </div>
+                    
+                    <div class="box box-info">
+                        <h4>Objectif 3</h4>
+                        <p><strong>Optimisation raster</strong></p>
+                        <p>Comparer les performances de publication d'images haute résolution</p>
+                    </div>
+                </div>
+
+                <h3>Compétences visées</h3>
+                <ul>
+                    <li>Maîtrise des standards OGC (WPS, WMS, WMTS)</li>
+                    <li>Développement d'applications web cartographiques interactives</li>
+                    <li>Optimisation de la performance et de l'expérience utilisateur</li>
+                    <li>Pipeline complet de traitement de données géospatiales</li>
+                    <li>Analyse critique des choix techniques et architecturaux</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 4: Plan détaillé -->
+        <div class="slide">
+            <div class="slide-number">4/35</div>
+            <div class="slide-header">
+                <h2>Structure de la Présentation</h2>
+            </div>
+            <div class="slide-content">
+                <div class="workflow-step" data-step="1">
+                    <h3>Exercice 1: Serveur WPS et Géotraitements</h3>
+                    <p>Architecture, implémentation de processus spatiaux et statistiques, analyse des performances</p>
+                </div>
+
+                <div class="workflow-step" data-step="2">
+                    <h3>Exercice 2: Web Mapping de Données Massives</h3>
+                    <p>Pipeline de conversion NetCDF vers JSON, interface cartographique interactive avec visualisations temporelles</p>
+                </div>
+
+                <div class="workflow-step" data-step="3">
+                    <h3>Exercice 3: Optimisation d'Images Haute Résolution</h3>
+                    <p>Comparaison approfondie GeoTIFF RAW vs Cloud Optimized GeoTIFF, tests de performance multi-critères</p>
+                </div>
+
+                <div class="workflow-step" data-step="4">
+                    <h3>Synthèse et Perspectives</h3>
+                    <p>Bilan des acquis, recommandations techniques et ouvertures</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTIE 1: EXERCICE WPS -->
+        
+        <!-- Slide 5: Introduction WPS -->
+        <div class="slide">
+            <div class="slide-number">5/35</div>
+            <div class="slide-header">
+                <h2>Exercice 1: Web Processing Service</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Qu'est-ce qu'un serveur WPS?</h3>
+                <p>Le <span class="highlight">Web Processing Service</span> est un standard de l'OGC (Open Geospatial Consortium) permettant de publier, décrire et exécuter des processus géospatiaux à distance via des services web normalisés.</p>
+
+                <div class="two-column">
+                    <div class="box">
+                        <h4>Principes fondamentaux</h4>
+                        <ul>
+                            <li>Architecture client-serveur</li>
+                            <li>Traitements côté serveur</li>
+                            <li>Interface standardisée (GetCapabilities, DescribeProcess, Execute)</li>
+                            <li>Indépendance du logiciel client</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="box box-success">
+                        <h4>Avantages clés</h4>
+                        <ul>
+                            <li>Centralisation des ressources de calcul</li>
+                            <li>Interopérabilité garantie</li>
+                            <li>Pas d'installation logicielle lourde</li>
+                            <li>Réutilisabilité des processus</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="key-insight">
+                    <strong>Contexte du projet:</strong> Développement d'un serveur WPS adapté au contexte marocain, permettant d'exécuter des traitements sur des données agricoles, hydrologiques et climatiques locales.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Stack technique WPS -->
+        <div class="slide">
+            <div class="slide-number">6/35</div>
+            <div class="slide-header">
+                <h2>Stack Technologique: Flask et PyWPS</h2>
+            </div>
+            <div class="slide-content">
+                <div class="two-column">
+                    <div class="box">
+                        <h3>Flask Framework</h3>
+                        <p>Micro-framework web Python léger et flexible</p>
+                        <ul>
+                            <li><strong>Simplicité:</strong> Application en quelques lignes</li>
+                            <li><strong>Flexibilité:</strong> Pas de structure imposée</li>
+                            <li><strong>Extensibilité:</strong> Nombreuses extensions</li>
+                            <li><strong>Rapidité:</strong> Déploiement immédiat</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="box box-info">
+                        <h3>PyWPS</h3>
+                        <p>Implémentation Python du standard WPS</p>
+                        <ul>
+                            <li>Définition de processus personnalisés</li>
+                            <li>Gestion des entrées/sorties</li>
+                            <li>Conformité OGC garantie</li>
+                            <li>Interface avec bibliothèques Python</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Bibliothèques géospatiales Python</h3>
+                <div class="three-column">
+                    <div class="box">
+                        <h4>GeoPandas</h4>
+                        <p>Manipulation de données vectorielles, opérations géométriques</p>
+                    </div>
+                    <div class="box">
+                        <h4>Rasterio</h4>
+                        <p>Lecture et traitement de rasters (DEM, MNT)</p>
+                    </div>
+                    <div class="box">
+                        <h4>WhiteboxTools</h4>
+                        <p>Analyses hydrologiques avancées</p>
+                    </div>
+                </div>
+
+                <div class="box" style="margin-top: 15px;">
+                    <p><strong>NumPy:</strong> Calculs numériques et manipulation de matrices pour opérations raster efficaces</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Architecture système WPS -->
+        <div class="slide">
+            <div class="slide-number">7/35</div>
+            <div class="slide-header">
+                <h2>Architecture Client-Serveur du Système</h2>
+            </div>
+            <div class="slide-content">
+
+                <div class="workflow-step" data-step="1">
+                    <h4>Client Web (Navigateur)</h4>
+                    <p>Interface utilisateur pour sélection des processus, chargement de fichiers, paramétrage et consultation des résultats</p>
+                </div>
+
+                <div class="workflow-step" data-step="2">
+                    <h4>Serveur Flask / WPS Local</h4>
+                    <p>Réception requêtes HTTP, gestion fichiers, orchestration des traitements, exposition endpoint WPS conforme OGC</p>
+                </div>
+
+                <div class="workflow-step" data-step="3">
+                    <h4>Moteur de Traitement</h4>
+                    <p>Exécution des calculs géométriques, spatiaux et matriciels via bibliothèques Python spécialisées</p>
+                </div>
+
+                <div class="key-insight">
+                    <strong>Point clé:</strong> Architecture modulaire permettant l'ajout facile de nouveaux processus sans modification du système global. Tous les calculs sont centralisés côté serveur, garantissant légèreté et sécurité côté client.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Structure projet -->
+        <div class="slide">
+            <div class="slide-number">8/35</div>
+            <div class="slide-header">
+                <h2>Organisation Modulaire du Projet</h2>
+            </div>
+            <div class="slide-content">
+                <div class="code-block">
+wps_maroc/
+├── app.py              # Serveur Flask principal
+├── pywps.cfg           # Configuration WPS
+├── processes/          # Scripts des processus
+│   ├── area_calc.py    # Calcul de superficie
+│   ├── solar_potential.py  # Ensoleillement
+│   └── watershed_calc.py   # Bassin versant
+├── data/               # Données temporaires
+├── templates/          # Formulaires HTML
+│   ├── area_form.html
+│   ├── solar_form.html
+│   └── watershed_form.html
+└── static/             # Ressources web
+                </div>
+
+                <div class="two-column">
+                    <div class="box">
+                        <h4>Séparation des responsabilités</h4>
+                        <ul>
+                            <li>app.py: Routage et gestion HTTP</li>
+                            <li>processes/: Logique métier isolée</li>
+                            <li>templates/: Interfaces utilisateur</li>
+                            <li>data/: Stockage temporaire sécurisé</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="box box-success">
+                        <h4>Avantages architecture</h4>
+                        <ul>
+                            <li>Maintenabilité accrue</li>
+                            <li>Tests unitaires facilités</li>
+                            <li>Réutilisation des processus</li>
+                            <li>Extension sans régression</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Processus 1 - Superficie -->
+        <div class="slide">
+            <div class="slide-number">9/35</div>
+            <div class="slide-header">
+                <h2>Processus 1: Calcul de Superficie</h2>
+            </div>
+            <div class="slide-content">
+                <div class="box box-info">
+                    <h3>Objectif</h3>
+                    <p>Déterminer automatiquement la surface totale d'entités géographiques à partir d'un shapefile, avec mesures précises en unités métriques.</p>
+                </div>
+
+                <h3>Pipeline de traitement</h3>
+                <div class="workflow-step" data-step="1">
+                    <h4>Upload et validation</h4>
+                    <p>Réception du shapefile compressé (.zip) contenant .shp, .shx, .dbf, .prj</p>
+                </div>
+
+                <div class="workflow-step" data-step="2">
+                    <h4>Lecture avec GeoPandas</h4>
+                    <p>Chargement des géométries et attributs, vérification de l'intégrité</p>
+                </div>
+
+                <div class="workflow-step" data-step="3">
+                    <h4>Reprojection EPSG:32630</h4>
+                    <p>Transformation en UTM zone 30N pour garantir mesures métriques fiables adaptées au Maroc</p>
+                </div>
+
+                <div class="workflow-step" data-step="4">
+                    <h4>Calcul et conversion</h4>
+                    <p>Application de .area sur chaque polygone, conversion m² → hectares, sommation totale</p>
+                </div>
+
+                <div class="box box-success" style="margin-top: 15px;">
+                    <p><strong>Résultat:</strong> Valeur numérique en hectares (arrondie à 2 décimales) affichée dynamiquement dans l'interface web</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Processus 2 - Ensoleillement -->
+        <div class="slide">
+            <div class="slide-number">10/35</div>
+            <div class="slide-header">
+                <h2>Processus 2: Ensoleillement Potentiel</h2>
+            </div>
+            <div class="slide-content">
+                <div class="box box-alt">
+                    <h3>Objectif</h3>
+                    <p>Estimer l'ensoleillement moyen annuel sur une zone donnée à partir d'un MNT en tenant compte de la topographie.</p>
+                </div>
+
+                <h3>Méthodologie d'analyse</h3>
+                <div class="workflow-step" data-step="1">
+                    <h4>Lecture du raster DEM</h4>
+                    <p>Chargement du Modèle Numérique de Terrain (.tif) avec Rasterio, extraction des valeurs d'altitude</p>
+                </div>
+
+                <div class="workflow-step" data-step="2">
+                    <h4>Calcul de la pente</h4>
+                    <p>Utilisation de np.gradient pour calculer variations d'altitude selon axes X et Y</p>
+                </div>
+
+                <div class="workflow-step" data-step="3">
+                    <h4>Facteur correctif topographique</h4>
+                    <p>Coefficient tenant compte de l'inclinaison: zones pentues reçoivent moins de rayonnement direct</p>
+                </div>
+
+                <div class="workflow-step" data-step="4">
+                    <h4>Estimation énergétique</h4>
+                    <p>Formule simplifiée: Ensoleillement = 1500 × facteur_pente, moyenne spatiale calculée</p>
+                </div>
+
+                <div class="workflow-step" data-step="5">
+                    <h4>Visualisation</h4>
+                    <p>Génération carte thermique Matplotlib montrant distribution spatiale de l'ensoleillement</p>
+                </div>
+
+                <div class="box box-success" style="margin-top: 15px;">
+                    <p><strong>Sorties:</strong> Valeur moyenne (kWh/m²/an) + Carte de distribution spatiale</p>
+                    <p><strong>Applications:</strong> Planification énergétique solaire, agriculture de précision</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Processus 3 - Bassin versant -->
+        <div class="slide">
+            <div class="slide-number">11/35</div>
+            <div class="slide-header">
+                <h2>Processus 3: Délimitation de Bassin Versant</h2>
+            </div>
+            <div class="slide-content">
+                <div class="box box-info">
+                    <h3>Objectif hydrologique</h3>
+                    <p>Identifier automatiquement les limites d'un bassin versant à partir d'un point exutoire et d'un MNT, en utilisant l'analyse du flux hydrologique.</p>
+                </div>
+
+                <h3>Chaîne de traitement WhiteboxTools</h3>
+                <div class="workflow-step" data-step="1">
+                    <h4>Prétraitement du MNT</h4>
+                    <p>Remplissage des dépressions pour éliminer anomalies topographiques faussant le calcul de flux</p>
+                </div>
+
+                <div class="workflow-step" data-step="2">
+                    <h4>Calcul du flux directionnel</h4>
+                    <p>Détermination de la direction que suit l'eau à chaque cellule du raster (D8 algorithm)</p>
+                </div>
+
+                <div class="workflow-step" data-step="3">
+                    <h4>Accumulation de flux</h4>
+                    <p>Calcul des surfaces drainées accumulées, identification des réseaux hydrographiques</p>
+                </div>
+
+                <div class="workflow-step" data-step="4">
+                    <h4>Délimitation du bassin</h4>
+                    <p>Extraction de la zone drainée correspondant au point d'exutoire spécifié</p>
+                </div>
+
+                <div class="two-column" style="margin-top: 20px;">
+                    <div class="box">
+                        <h4>Entrées requises</h4>
+                        <ul>
+                            <li>MNT haute résolution</li>
+                            <li>Coordonnées exutoire</li>
+                            <li>Paramètres hydrologiques</li>
+                        </ul>
+                    </div>
+                    <div class="box box-success">
+                        <h4>Applications pratiques</h4>
+                        <ul>
+                            <li>Gestion ressources hydriques</li>
+                            <li>Prévention des inondations</li>
+                            <li>Aménagement du territoire</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Résultats WPS -->
+        <div class="slide">
+            <div class="slide-number">12/35</div>
+            <div class="slide-header">
+                <h2>Résultats et Visualisations WPS</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Exemples de résultats obtenus</h3>
+                
+                <div class="three-column">
+                    <div class="box">
+                        <h4>Superficie provinces</h4>
+                        <p><span class="metric metric-success">2,547,891.34 ha</span></p>
+                        <p>Shapefile des provinces marocaines</p>
+                    </div>
+                    <div class="box box-alt">
+                        <h4>Ensoleillement moyen</h4>
+                        <p><span class="metric metric-warning">1,847 kWh/m²/an</span></p>
+                        <p>Zone représentative Maroc</p>
+                    </div>
+                    <div class="box box-info">
+                        <h4>Bassin versant</h4>
+                        <p><span class="metric">Délimitation OK</span></p>
+                        <p>Extraction réussie</p>
+                    </div>
+                </div>
+
+                <div class="chart-placeholder">
+                        <img src="C:\Users\Yassine\Desktop\ALGO\Capture d’écran 2025-12-07 164658.png" alt="Capture d’écran 2025-12-07 164658">
+                </div>
+                <div class="key-insight">
+                    <strong>Qualité des résultats:</strong> Précision conforme aux attentes, cohérence spatiale vérifiée, visualisations claires facilitant l'interprétation par les utilisateurs non-experts.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Performance WPS -->
+        <div class="slide">
+            <div class="slide-number">13/35</div>
+            <div class="slide-header">
+                <h2>Analyse des Performances WPS</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Temps d'exécution comparatifs</h3>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-card raw">
+                        <h3>Calcul Superficie</h3>
+                        <div class="performance-value" style="color: #10b981;">Rapide</div>
+                        <p>Opérations vectorielles simples</p>
+                        <p>Temps: < 1 seconde</p>
+                    </div>
+                    <div class="comparison-card cog">
+                        <h3>Ensoleillement</h3>
+                        <div class="performance-value" style="color: #f59e0b;">Modéré</div>
+                        <p>Traitements matriciels complexes</p>
+                        <p>Temps: 2-4 secondes</p>
+                    </div>
+                </div>
+
+                <div class="box" style="margin-top: 20px;">
+                    <h4>Bassin Versant: Le plus gourmand</h4>
+                    <p>Multiples étapes hydrologiques séquentielles nécessitant plusieurs passes sur le MNT</p>
+                    <p><span class="metric metric-warning">Temps: 5-8 secondes</span></p>
+                </div>
+
+                <h3>Facteurs d'influence identifiés</h3>
+                <ul>
+                    <li><strong>Complexité algorithmique:</strong> Nombre d'opérations par processus</li>
+                    <li><strong>Taille des données:</strong> Résolution et étendue des rasters</li>
+                    <li><strong>Type d'opération:</strong> Vectoriel (rapide) vs Matriciel (plus lent)</li>
+                    <li><strong>Ressources système:</strong> CPU, RAM disponible</li>
+                </ul>
+
+                <div class="key-insight">
+                    <strong>Conclusion performance:</strong> Temps proportionnels à la complexité, réactivité satisfaisante pour usage local/pédagogique. Pour production à grande échelle, optimisations additionnelles recommandées (parallélisation, cache).
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: Stabilité WPS -->
+        <div class="slide">
+            <div class="slide-number">14/35</div>
+            <div class="slide-header">
+                <h2>Stabilité et Ergonomie de l'Interface</h2>
+            </div>
+            <div class="slide-content">
+                <div class="two-column">
+                    <div class="box box-success">
+                        <h3>Points forts constatés</h3>
+                        <ul>
+                            <li>Aucun plantage sur cycles de test répétés</li>
+                            <li>Gestion robuste des exceptions</li>
+                            <li>Upload de fichiers intuitif</li>
+                            <li>Retour visuel immédiat (spinners)</li>
+                            <li>Messages d'erreur explicites</li>
+                            <li>Réactivité constante</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="box box-info">
+                        <h3>Ergonomie interface</h3>
+                        <ul>
+                            <li>Formulaires HTML clairs</li>
+                            <li>Navigation simple entre processus</li>
+                            <li>Indicateurs de progression</li>
+                            <li>Résultats affichés dynamiquement</li>
+                            <li>Téléchargement des outputs</li>
+                            <li>Design responsive</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Tests de charge effectués</h3>
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>Scénario</th>
+                            <th>Description</th>
+                            <th>Résultat</th>
+                        </tr>
+                        <tr>
+                            <td>Fichiers volumineux</td>
+                            <td>Shapefile > 50 MB</td>
+                            <td>Traitement correct</td>
+                        </tr>
+                        <tr>
+                            <td>Requêtes successives</td>
+                            <td>10 processus consécutifs</td>
+                            <td>Stabilité maintenue</td>
+                        </tr>
+                        <tr>
+                            <td>Formats incorrects</td>
+                            <td>Fichiers non-géospatiaux</td>
+                            <td>Erreur gérée proprement</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTIE 2: EXERCICE DONNÉES MASSIVES -->
+
+        <!-- Slide 15: Introduction données massives -->
+        <div class="slide">
+            <div class="slide-number">15/35</div>
+            <div class="slide-header">
+                <h2>Exercice 2: Web Mapping de Données Massives</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Contexte et problématique</h3>
+                <p>Les modèles climatiques modernes génèrent des volumes considérables de données météorologiques multidimensionnelles. Leur exploitation nécessite des pipelines de transformation et des interfaces de visualisation adaptées.</p>
+
+                <div class="two-column">
+                    <div class="box box-alt">
+                        <h3>Défi technique</h3>
+                        <ul>
+                            <li>Format NetCDF non compatible web</li>
+                            <li>Données multidimensionnelles complexes</li>
+                            <li>Volume important (plusieurs Go)</li>
+                            <li>Nécessité d'agrégation spatiale</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="box box-success">
+                        <h3>Objectifs visés</h3>
+                        <ul>
+                            <li>Pipeline de conversion NetCDF → JSON</li>
+                            <li>Extraction statistiques régionales</li>
+                            <li>Interface interactive Leaflet/Chart.js</li>
+                            <li>Visualisation spatio-temporelle</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="key-insight">
+                    <strong>Cas d'usage:</strong> Visualisation interactive de données climatiques ERA5 pour le Maroc (température et précipitations 2020-2025) permettant aux décideurs d'analyser les tendances régionales et temporelles.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: Source données ERA5 -->
+        <div class="slide">
+            <div class="slide-number">16/35</div>
+            <div class="slide-header">
+                <h2>Source: Climate Data Store - ERA5</h2>
+            </div>
+            <div class="slide-content">
+                <div class="box box-info">
+                    <h3>ERA5: 5ème génération de réanalyse ECMWF</h3>
+                    <p>Données climatiques globales horaires depuis 1940, combinant observations et modélisation numérique</p>
+                </div>
+
+                <h3>Paramètres de téléchargement</h3>
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>Paramètre</th>
+                            <th>Valeur</th>
+                        </tr>
+                        <tr>
+                            <td>Variables</td>
+                            <td>Température à 2m (t2m), Précipitations totales</td>
+                        </tr>
+                        <tr>
+                            <td>Période temporelle</td>
+                            <td>2020 - 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Échantillonnage</td>
+                            <td>3 jours/mois (début, milieu, fin)</td>
+                        </tr>
+                        <tr>
+                            <td>Heures journalières</td>
+                            <td>06:00, 12:00, 18:00</td>
+                        </tr>
+                        <tr>
+                            <td>Emprise géographique</td>
+                            <td>Maroc (bounding box)</td>
+                        </tr>
+                        <tr>
+                            <td>Format initial</td>
+                            <td>NetCDF (.nc)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="box" style="margin-top: 15px;">
+                    <p><strong>Volume total:</strong> 540 fichiers NetCDF (5 ans × 12 mois × 3 jours × 3 heures × 2 variables)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 17: Problématique NetCDF -->
+        <div class="slide">
+            <div class="slide-number">17/35</div>
+            <div class="slide-header">
+                <h2>Problématique du Format NetCDF</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Qu'est-ce que NetCDF?</h3>
+                <p><span class="highlight">Network Common Data Form</span> - Format standard pour données scientifiques multidimensionnelles, largement utilisé en climatologie et météorologie.</p>
+
+                <div class="two-column">
+                    <div class="box box-success">
+                        <h3>Avantages NetCDF</h3>
+                        <ul>
+                            <li>Structure multidimensionnelle efficace</li>
+                            <li>Métadonnées riches (CF conventions)</li>
+                            <li>Compression intégrée</li>
+                            <li>Standard communautaire établi</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="box box-alt">
+                        <h3>Limitations pour le web</h3>
+                        <ul>
+                            <li>Non lisible par navigateurs</li>
+                            <li>Nécessite bibliothèques spécialisées</li>
+                            <li>Structure complexe pour JavaScript</li>
+                            <li>Fichiers volumineux</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Solutions explorées</h3>
+                <ul>
+                    <li><strong>netcdfjs (JS):</strong> Bibliothèque expérimentale, fonctionnalités limitées</li>
+                    <li><strong>Serveur OPeNDAP:</strong> Complexité infrastructure, latence réseau</li>
+                    <li><strong>Conversion préalable:</strong> ✓ Solution retenue - Pipeline Python robuste</li>
+                </ul>
+
+                <div class="key-insight">
+                    <strong>Décision:</strong> Conversion offline NetCDF → CSV → SHP → JSON avec extraction statistiques, privilégiant performance client et simplicité déploiement.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18: Pipeline étape 1 -->
+        <div class="slide">
+            <div class="slide-number">18/35</div>
+            <div class="slide-header">
+                <h2>Pipeline de Conversion - Étape 1</h2>
+            </div>
+            <div class="slide-content">
+                <h3>NetCDF → CSV avec xarray et pandas</h3>
+                
+                <div class="code-block">
+import xarray as xr
+import pandas as pd
+
+# Chargement NetCDF
+ds = xr.open_dataset("temp-2020-janv-1-0600.nc")
+
+# Extraction variable température
+temperature = ds["t2m"]
+
+# Conversion en DataFrame
+df = temperature.to_dataframe().reset_index()
+
+# Export CSV
+df.to_csv("temperature_data.csv", index=False)
+                </div>
+
+                <div class="box" style="margin-top: 15px;">
+                    <h4>Résultat intermédiaire</h4>
+                    <p>Fichier CSV tabulaire avec colonnes: latitude, longitude, time, t2m (température)</p>
+                </div>
+
+                <div class="two-column" style="margin-top: 15px;">
+                    <div class="box box-info">
+                        <h4>Avantages xarray</h4>
+                        <p>Manipulation intuitive de données multidimensionnelles labellisées, compatibilité pandas</p>
+                    </div>
+                    <div class="box">
+                        <h4>Traitement batch</h4>
+                        <p>Script automatisé pour traiter les 540 fichiers NetCDF séquentiellement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 19: Pipeline étape 2 -->
+        <div class="slide">
+            <div class="slide-number">19/35</div>
+            <div class="slide-header">
+                <h2>Pipeline de Conversion - Étape 2</h2>
+            </div>
+            <div class="slide-content">
+                <h3>CSV → Shapefile via QGIS</h3>
+                
+                <div class="workflow-step" data-step="1">
+                    <h4>Import CSV dans QGIS</h4>
+                    <p>Chargement comme couche délimitée avec colonnes longitude/latitude</p>
+                </div>
+
+                <div class="workflow-step" data-step="2">
+                    <h4>Conversion en points avec MMQGIS</h4>
+                    <p>Transformation en couche vectorielle ponctuelle géoréférencée</p>
+                </div>
+
+                <div class="workflow-step" data-step="3">
+                    <h4>Découpage spatial</h4>
+                    <p>Intersection avec couche des limites administratives marocaines</p>
+                </div>
+
+                <div class="workflow-step" data-step="4">
+                    <h4>Jointure attributaire</h4>
+                    <p>Association de chaque point à sa région administrative d'appartenance</p>
+                </div>
+
+                <div class="chart-placeholder">
+                        <img src="C:\Users\Yassine\Desktop\ALGO\Capture d’écran 2025-12-07 164923.png" alt="Capture d’écran Capture d’écran 2025-12-07 164923">
+                </div>
+
+                <div class="box box-success" style="margin-top: 15px;">
+                    <p><strong>Output:</strong> Shapefile par date/heure avec attributs: région, température, coordonnées</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Pipeline étape 3 -->
+        <div class="slide">
+            <div class="slide-number">20/35</div>
+            <div class="slide-header">
+                <h2>Pipeline de Conversion - Étape 3</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Extraction statistiques régionales avec Python</h3>
+                
+                <div class="code-block">
+import geopandas as gpd
+import pandas as pd
+
+# Fusion de tous les shapefiles du mois
+gdfs = [gpd.read_file(shp) for shp in shp_files]
+data = pd.concat(gdfs, ignore_index=True)
+
+# Fonction conversion Kelvin → Celsius
+def K_to_C(k):
+    return k - 273.15
+
+# Calcul statistiques par région
+results = data.groupby("name").agg(
+    mean_K=("t2m", "mean"),
+    min_K=("t2m", "min"),
+    max_K=("t2m", "max")
+).reset_index()
+
+# Conversion température
+results["mean_C"] = results["mean_K"].apply(K_to_C)
+results["min_C"] = results["min_K"].apply(K_to_C)
+results["max_C"] = results["max_K"].apply(K_to_C)
+                </div>
+
+                <div class="box box-info" style="margin-top: 15px;">
+                    <p><strong>Agrégation spatiale:</strong> Pour chaque région et chaque mois, calcul de la moyenne, minimum et maximum de température et précipitation</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 21: Pipeline étape 4 -->
+        <div class="slide">
+            <div class="slide-number">21/35</div>
+            <div class="slide-header">
+                <h2>Pipeline de Conversion - Étape 4</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Structuration finale en JSON</h3>
+                
+                <div class="code-block">
+import json
+
+# Construction structure hiérarchique
+climateData = {}
+for _, row in df.iterrows():
+    region = row["region"]
+    year = int(row["year"])
+    month_index = int(row["month"]) - 1
+    
+    if region not in climateData:
+        climateData[region] = {}
+    if year not in climateData[region]:
+        climateData[region][year] = [None] * 12
+    
+    climateData[region][year][month_index] = {
+        "temp": {
+            "avg": float(row["temp_mean_C"]),
+            "max": float(row["temp_max_C"]),
+            "min": float(row["temp_min_C"])
+        },
+        "precip": {
+            "avg": float(row["precip_mean_mm"]),
+            "max": float(row["precip_max_mm"]),
+            "min": float(row["precip_min_mm"])
+        }
+    }
+
+# Export JSON
+with open("climateData.json", "w") as f:
+    json.dump(climateData, f, indent=4)
+                </div>
+
+                <div class="box box-success" style="margin-top: 15px;">
+                    <p><strong>Structure optimale:</strong> Accès direct par région/année/mois en JavaScript, fichier léger (<  500 KB), exploitable côté client sans serveur</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 22: Technologies interface -->
+        <div class="slide">
+            <div class="slide-number">22/35</div>
+            <div class="slide-header">
+                <h2>Technologies de l'Interface Interactive</h2>
+            </div>
+            <div class="slide-content">
+                <div class="three-column">
+                    <div class="box">
+                        <h3>HTML5</h3>
+                        <p>Structure sémantique de la page, formulaires de sélection</p>
+                    </div>
+                    <div class="box">
+                        <h3>CSS3</h3>
+                        <p>Mise en forme moderne, responsive design, animations</p>
+                    </div>
+                    <div class="box">
+                        <h3>JavaScript</h3>
+                        <p>Logique interactive, manipulation données, événements</p>
+                    </div>
+                </div>
+
+                <h3>Bibliothèques JavaScript principales</h3>
+                <div class="two-column">
+                    <div class="box box-info">
+                        <h4>Leaflet.js</h4>
+                        <ul>
+                            <li>Carte interactive du Maroc</li>
+                            <li>Chargement du GeoJSON régional</li>
+                            <li>Colorisation selon valeurs climatiques</li>
+                            <li>Événements de clic sur régions</li>
+                            <li>Popups informatifs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="box box-alt">
+                        <h4>Chart.js</h4>
+                        <ul>
+                            <li>Graphiques en ligne (séries temporelles)</li>
+                            <li>Graphiques en barres (comparaisons)</li>
+                            <li>Mise à jour dynamique</li>
+                            <li>Interactivité (tooltips, légendes)</li>
+                            <li>Export d'images</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="key-insight">
+                    <strong>Architecture frontend:</strong> Application web monopage (SPA) sans backend, toutes les données chargées côté client pour réactivité maximale. Déploiement via GitHub Pages pour accessibilité publique.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 23: Fonctionnalités interface -->
+        <div class="slide">
+            <div class="slide-number">23/35</div>
+            <div class="slide-header">
+                <h2>Fonctionnalités de l'Interface</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Contrôles utilisateur</h3>
+                <div class="two-column">
+                    <div class="box">
+                        <h4>Sélection de paramètres</h4>
+                        <ul>
+                            <li>Variable: Température / Précipitation</li>
+                            <li>Indicateur: Moyenne / Min / Max</li>
+                            <li>Année: 2020-2025</li>
+                            <li>Mois: Janvier-Décembre</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="box box-info">
+                        <h4>Navigation temporelle</h4>
+                        <ul>
+                            <li>Slider chronologique</li>
+                            <li>Animation automatique</li>
+                            <li>Contrôles lecture/pause</li>
+                            <li>Vitesse ajustable</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Visualisations disponibles</h3>
+                <div class="workflow-step" data-step="1">
+                    <h4>Carte choroplèthe interactive</h4>
+                    <p>Colorisation des régions selon valeurs, clic pour détails, zoom/pan</p>
+                </div>
+
+                <div class="workflow-step" data-step="2">
+                    <h4>Graphique d'évolution temporelle</h4>
+                    <p>Courbe annuelle pour une région sélectionnée, identification des tendances</p>
+                </div>
+
+                <div class="workflow-step" data-step="3">
+                    <h4>Comparaison multi-régionale</h4>
+                    <p>Superposition de plusieurs régions sur un même graphique</p>
+                </div>
+
+                <div class="workflow-step" data-step="4">
+                    <h4>Classement régional</h4>
+                    <p>Tri automatique des régions par valeur décroissante/croissante</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 24: Résultats Exercice 2 -->
+        <div class="slide">
+            <div class="slide-number">24/35</div>
+            <div class="slide-header">
+                <h2>Résultats: Site Web Interactif</h2>
+            </div>
+            <div class="slide-content">
+                <div class="box box-success">
+                    <h3>Déploiement réussi</h3>
+                    <p><strong>URL:</strong> https://kawtarnafia86-cyber.github.io/carte-interactive/</p>
+                    <p>Site accessible publiquement, responsive, temps de chargement < 2 secondes</p>
+                </div>
+
+                <div class="chart-placeholder">
+                        <img src="C:\Users\Yassine\Desktop\ALGO\Capture d’écran 2025-12-07 124307.png" alt="Capture d’écran Capture d’écran 2025-12-07 124307">
+                </div>
+                <h3>Insights climatiques révélés</h3>
+                <ul>
+                    <li>Gradient thermique Nord-Sud clairement visualisé</li>
+                    <li>Variabilité saisonnière marquée dans régions intérieures</li>
+                    <li>Tendances pluviométriques contrastées entre côtes et Atlas</li>
+                    <li>Possibilité de détecter anomalies/événements climatiques extrêmes</li>
+                </ul>
+
+                <div class="key-insight">
+                    <strong>Valeur ajoutée:</strong> Transformation de données brutes complexes en outil d'aide à la décision accessible, permettant aux gestionnaires, agriculteurs et chercheurs d'analyser facilement les dynamiques climatiques régionales.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 25: Critique Exercice 2 -->
+        <div class="slide">
+            <div class="slide-number">25/35</div>
+            <div class="slide-header">
+                <h2>Analyse Critique: Données Massives</h2>
+            </div>
+            <div class="slide-content">
+                <div class="two-column">
+                    <div class="box box-success">
+                        <h3>Points forts</h3>
+                        <ul>
+                            <li>Pipeline complet NetCDF → JSON robuste</li>
+                            <li>Interface intuitive et responsive</li>
+                            <li>Déploiement sans serveur backend</li>
+                            <li>Chargement rapide côté client</li>
+                            <li>Visualisations claires et pertinentes</li>
+                            <li>Données contextualisées (Maroc)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="box box-alt">
+                        <h3>Limitations identifiées</h3>
+                        <ul>
+                            <li>Prétraitement manuel intensif</li>
+                            <li>Perte de résolution spatiale (agrégation)</li>
+                            <li>Échantillonnage temporel limité</li>
+                            <li>Pas de mise à jour automatique</li>
+                            <li>Stockage entièrement côté client</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Améliorations envisageables</h3>
+                <ul>
+                    <li><strong>Automatisation:</strong> Scripts CRON pour téléchargement/conversion automatiques</li>
+                    <li><strong>Backend API:</strong> Serveur Node.js/Python pour requêtes dynamiques</li>
+                    <li><strong>Base de données:</strong> PostgreSQL/PostGIS pour stockage optimisé</li>
+                    <li><strong>Résolution adaptative:</strong> Niveaux de zoom avec détails variables</li>
+                    <li><strong>Exports:</strong> Téléchargement de sous-ensembles de données</li>
+                </ul>
+
+                <div class="key-insight">
+                    <strong>Bilan:</strong> Solution pragmatique et fonctionnelle pour le contexte pédagogique. Pour une application de production, architecture client-serveur avec base de données géospatiale recommandée.
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTIE 3: EXERCICE IMAGES HAUTE RÉSOLUTION -->
+
+        <!-- Slide 26: Introduction Exercice 3 -->
+        <div class="slide">
+            <div class="slide-number">26/35</div>
+            <div class="slide-header">
+                <h2>Exercice 3: Optimisation d'Images Haute Résolution</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Problématique</h3>
+                <p>Les orthophotos drones et satellites offrent une richesse d'information sans précédent, mais leur volume pose des défis majeurs pour la diffusion web performante.</p>
+
+                <div class="two-column">
+                    <div class="box box-alt">
+                        <h3>Défis identifiés</h3>
+                        <ul>
+                            <li>Fichiers de plusieurs centaines de Mo</li>
+                            <li>Temps de chargement prohibitifs</li>
+                            <li>Consommation importante de bande passante</li>
+                            <li>Latence lors du zoom/pan</li>
+                            <li>Charge serveur élevée</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="box box-success">
+                        <h3>Objectifs</h3>
+                        <ul>
+                            <li>Comparer formats RAW vs COG</li>
+                            <li>Mesurer impact sur performances WMS</li>
+                            <li>Tester différents styles de rendu</li>
+                            <li>Analyser comportement selon zoom</li>
+                            <li>Formuler recommandations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="key-insight">
+                    <strong>Hypothèse:</strong> Le format Cloud Optimized GeoTIFF (COG) devrait significativement améliorer les performances de diffusion web par rapport au GeoTIFF standard grâce à son organisation interne optimisée.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 27: Caractéristiques orthophoto -->
+        <div class="slide">
+            <div class="slide-number">27/35</div>
+            <div class="slide-header">
+                <h2>Caractéristiques de l'Orthophoto</h2>
+            </div>
+            <div class="slide-content">
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>Attribut</th>
+                            <th>Valeur</th>
+                        </tr>
+                        <tr>
+                            <td>Source</td>
+                            <td>OpenAerialMap</td>
+                        </tr>
+                        <tr>
+                            <td>Zone couverte</td>
+                            <td>Zurich, Suisse (zone urbaine)</td>
+                        </tr>
+                        <tr>
+                            <td>Date d'acquisition</td>
+                            <td>12 novembre 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Résolution spatiale</td>
+                            <td>5 cm/pixel (0.04999 m)</td>
+                        </tr>
+                        <tr>
+                            <td>Dimensions</td>
+                            <td>6384 × 7115 pixels</td>
+                        </tr>
+                        <tr>
+                            <td>Bandes spectrales</td>
+                            <td>3 (Rouge, Vert, Bleu)</td>
+                        </tr>
+                        <tr>
+                            <td>Profondeur</td>
+                            <td>UInt8 (0-255)</td>
+                        </tr>
+                        <tr>
+                            <td>Système de coordonnées</td>
+                            <td>EPSG:32632 (WGS 84 / UTM zone 32N)</td>
+                        </tr>
+                        <tr>
+                            <td>Taille fichier RAW</td>
+                            <td><span class="metric metric-warning">174.58 MB</span></td>
+                        </tr>
+                        <tr>
+                            <td>Taille fichier COG</td>
+                            <td><span class="metric metric-success">20.76 MB</span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="box" style="margin-top: 15px;">
+                    <p><strong>Réduction de taille:</strong> 88% grâce à la compression optimisée et l'organisation par tuiles du format COG</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 28: Qu'est-ce qu'un COG -->
+        <div class="slide">
+            <div class="slide-number">28/35</div>
+            <div class="slide-header">
+                <h2>Cloud Optimized GeoTIFF: Principes</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Différences structurelles</h3>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-card raw">
+                        <h3>GeoTIFF Standard (RAW)</h3>
+                        <ul style="text-align: left;">
+                            <li>Organisation séquentielle</li>
+                            <li>Lecture complète requise</li>
+                            <li>Pas de pyramides internes</li>
+                            <li>Compression basique</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card cog">
+                        <h3>Cloud Optimized GeoTIFF</h3>
+                        <ul style="text-align: left;">
+                            <li>Organisation par tuiles</li>
+                            <li>Accès partiel (HTTP Range)</li>
+                            <li>Pyramides multi-résolution</li>
+                            <li>Compression avancée</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Avantages du COG pour le web</h3>
+                <ul>
+                    <li><strong>Overviews intégrées:</strong> Versions pré-calculées à différentes résolutions</li>
+                    <li><strong>Accès par blocs:</strong> Téléchargement uniquement des tuiles visibles</li>
+                    <li><strong>HTTP Range Requests:</strong> Lecture partielle sans download complet</li>
+                    <li><strong>Compatibilité:</strong> Reste un GeoTIFF valide, lisible par tous les outils</li>
+                </ul>
+
+                <div class="key-insight">
+                    <strong>Principe clé:</strong> Le COG permet au serveur de ne transférer que les portions d'image nécessaires à l'affichage de la vue courante, drastiquement réduisant la bande passante et le temps de réponse.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 29: Processus de conversion COG -->
+        <div class="slide">
+            <div class="slide-number">29/35</div>
+            <div class="slide-header">
+                <h2>Conversion GeoTIFF → COG avec GDAL</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Commande gdal_translate</h3>
+                
+                <div class="code-block">
+gdal_translate \
+    -of COG \
+    -co COMPRESS=DEFLATE \
+    -co TILED=YES \
+    -co BLOCKXSIZE=512 \
+    -co BLOCKYSIZE=512 \
+    -co OVERVIEWS=IGNORE_EXISTING \
+    Orthophoto.tif \
+    Orthophoto_COG.tif
+                </div>
+
+                <h3>Paramètres expliqués</h3>
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>Paramètre</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>-of COG</td>
+                            <td>Format de sortie Cloud Optimized GeoTIFF</td>
+                        </tr>
+                        <tr>
+                            <td>COMPRESS=DEFLATE</td>
+                            <td>Compression sans perte de qualité</td>
+                        </tr>
+                        <tr>
+                            <td>TILED=YES</td>
+                            <td>Organisation par tuiles carrées</td>
+                        </tr>
+                        <tr>
+                            <td>BLOCKXSIZE/YSIZE=512</td>
+                            <td>Taille des tuiles 512×512 pixels</td>
+                        </tr>
+                        <tr>
+                            <td>OVERVIEWS</td>
+                            <td>Génération automatique des pyramides</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="box box-success" style="margin-top: 15px;">
+                    <p><strong>Résultat:</strong> Fichier COG 88% plus léger, structuré pour accès web optimal</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 30: Publication GeoServer -->
+        <div class="slide">
+            <div class="slide-number">30/35</div>
+            <div class="slide-header">
+                <h2>Publication via GeoServer</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Configuration des couches</h3>
+                <p>Publication des deux versions en tant que couches distinctes pour permettre la comparaison directe.</p>
+
+                <div class="two-column">
+                    <div class="box">
+                        <h4>Couche RAW</h4>
+                        <ul>
+                            <li>Nom: WebMapping3:Orthophoto</li>
+                            <li>Source: Orthophoto.tif (174 MB)</li>
+                            <li>Cache: Désactivé pour tests purs</li>
+                        </ul>
+                    </div>
+                    <div class="box">
+                        <h4>Couche COG</h4>
+                        <ul>
+                            <li>Nom: WebMapping3:Orthophoto_COG</li>
+                            <li>Source: Orthophoto_COG.tif (20 MB)</li>
+                            <li>Cache: Désactivé pour tests purs</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Styles SLD créés</h3>
+                <div class="workflow-step" data-step="1">
+                    <h4>stylergb - Rendu naturel</h4>
+                    <p>Affichage des trois bandes RGB telles quelles, visualisation photographique</p>
+                </div>
+
+                <div class="workflow-step" data-step="2">
+                    <h4>stylegris - Niveaux de gris</h4>
+                    <p>Conversion en grayscale, utile pour analyse de contraste et textures</p>
+                </div>
+
+                <div class="workflow-step" data-step="3">
+                    <h4>stylecolormap - Colorisation thématique</h4>
+                    <p>Application d'une palette de couleurs basée sur les valeurs, visualisation analytique</p>
+                </div>
+
+                <div class="workflow-step" data-step="4">
+                    <h4>stylendvi - Pseudo-NDVI</h4>
+                    <p>Simulation d'indice de végétation pour démonstration, même sans bande infrarouge</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 31: Tests de performance -->
+        <div class="slide">
+            <div class="slide-number">31/35</div>
+            <div class="slide-header">
+                <h2>Protocole de Tests de Performance</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Méthodologie rigoureuse</h3>
+                <div class="box box-info">
+                    <p>Tests effectués en local (localhost:8080) pour éliminer latence réseau, cache GeoServer et navigateur désactivés, 3 essais par scénario avec moyenne calculée.</p>
+                </div>
+
+                <h3>Cinq axes de test</h3>
+                <div class="workflow-step" data-step="1">
+                    <h4>Test 1: Layer Preview GeoServer</h4>
+                    <p>Mesure du temps d'affichage initial via interface OpenLayers de GeoServer</p>
+                </div>
+
+                <div class="workflow-step" data-step="2">
+                    <h4>Test 2: Requêtes WMS GetMap</h4>
+                    <p>Chronométrage direct de requêtes identiques sur RAW et COG</p>
+                </div>
+
+                <div class="workflow-step" data-step="3">
+                    <h4>Test 3: Impact des styles</h4>
+                    <p>Comparaison des 4 styles SLD sur chaque format</p>
+                </div>
+
+                <div class="workflow-step" data-step="4">
+                    <h4>Test 4: Influence du zoom</h4>
+                    <p>Mesure des performances en zoom éloigné vs rapproché</p>
+                </div>
+
+                <div class="workflow-step" data-step="5">
+                    <h4>Test 5: Analyse fichiers HAR</h4>
+                    <p>Capture réseau complète en conditions d'utilisation réelles</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 32: Résultats comparatifs -->
+        <div class="slide">
+            <div class="slide-number">32/35</div>
+            <div class="slide-header">
+                <h2>Résultats: Comparaison RAW vs COG</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Synthèse des tests 1 à 4</h3>
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>Test</th>
+                            <th>RAW</th>
+                            <th>COG</th>
+                            <th>Gain COG</th>
+                        </tr>
+                        <tr>
+                            <td>Layer Preview</td>
+                            <td>0.7 s</td>
+                            <td>0.5 s</td>
+                            <td><span class="highlight-blue">-29%</span></td>
+                        </tr>
+                        <tr>
+                            <td>WMS GetMap</td>
+                            <td>666 ms</td>
+                            <td>326 ms</td>
+                            <td><span class="highlight-blue">-51%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Style RGB</td>
+                            <td>1090 ms</td>
+                            <td>521 ms</td>
+                            <td><span class="highlight-blue">-52%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Style NDVI</td>
+                            <td>779 ms</td>
+                            <td>298 ms</td>
+                            <td><span class="highlight-blue">-62%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Style Grayscale</td>
+                            <td>788 ms</td>
+                            <td>254 ms</td>
+                            <td><span class="highlight-blue">-68%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Zoom éloigné</td>
+                            <td>900 ms</td>
+                            <td>120 ms</td>
+                            <td><span class="highlight-blue">-87%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Zoom rapproché</td>
+                            <td>420 ms</td>
+                            <td>400 ms</td>
+                            <td><span class="highlight-blue">-5%</span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="key-insight">
+                    <strong>Observation majeure:</strong> Le COG surpasse systématiquement le RAW avec des gains de 29% à 87% selon le contexte. L'avantage est particulièrement marqué en zoom éloigné (utilisation des overviews) et pour les styles complexes.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 33: Analyse HAR -->
+        <div class="slide">
+            <div class="slide-number">33/35</div>
+            <div class="slide-header">
+                <h2>Analyse Approfondie: Fichiers HAR</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Métrique globales d'utilisation</h3>
+                <p>Scénario réaliste: 5 minutes de navigation (zoom, pan, changements de styles)</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card raw">
+                        <h3>RAW</h3>
+                        <p><strong>Requêtes:</strong> <span class="performance-value" style="font-size: 1.8em;">656</span></p>
+                        <p><strong>Temps total:</strong> 252.7 s</p>
+                        <p><strong>Volume:</strong> 18.12 MB</p>
+                        <p><strong>Requête max:</strong> 3470 ms</p>
+                    </div>
+                    <div class="comparison-card cog">
+                        <h3>COG</h3>
+                        <p><strong>Requêtes:</strong> <span class="performance-value" style="font-size: 1.8em; color: #10b981;">519</span></p>
+                        <p><strong>Temps total:</strong> 70.4 s</p>
+                        <p><strong>Volume:</strong> 16.59 MB</p>
+                        <p><strong>Requête max:</strong> 854 ms</p>
+                    </div>
+                </div>
+
+                <div class="box box-success" style="margin-top: 20px;">
+                    <h3>Gains mesurés</h3>
+                    <ul>
+                        <li><span class="metric metric-success">-21% de requêtes</span> Moins de fragmentation</li>
+                        <li><span class="metric metric-success">-72% de temps</span> Navigation ultra-fluide</li>
+                        <li><span class="metric metric-success">-8% de données</span> Économie bande passante</li>
+                        <li><span class="metric metric-success">-75% pic latence</span> Pas de blocage utilisateur</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 34: Conclusions techniques -->
+        <div class="slide">
+            <div class="slide-number">34/35</div>
+            <div class="slide-header">
+                <h2>Conclusions et Recommandations</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Acquis méthodologiques du projet</h3>
+                <ul>
+                    <li>Maîtrise de l'architecture client-serveur pour services géospatiaux (WPS, WMS)</li>
+                    <li>Pipeline complet de traitement de données climatiques massives</li>
+                    <li>Compréhension approfondie des enjeux de performance web cartographique</li>
+                    <li>Capacité d'analyse critique et de benchmarking technique</li>
+                </ul>
+
+                <h3>Recommandations pour projets futurs</h3>
+                <div class="two-column">
+                    <div class="box box-success">
+                        <h4>À privilégier</h4>
+                        <ul>
+                            <li>Format COG pour toute diffusion web de rasters</li>
+                            <li>Standards OGC pour interopérabilité</li>
+                            <li>Tests de performance systématiques</li>
+                            <li>Interfaces utilisateur intuitives</li>
+                        </ul>
+                    </div>
+                    <div class="box box-alt">
+                        <h4>À améliorer</h4>
+                        <ul>
+                            <li>Automatisation des pipelines de traitement</li>
+                            <li>Mise en cache intelligente</li>
+                            <li>Backend pour requêtes dynamiques</li>
+                            <li>Documentation technique complète</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="key-insight">
+                    <strong>Enseignement principal:</strong> L'optimisation technique (COG, compression, overviews) n'est pas optionnelle mais essentielle pour garantir une expérience utilisateur acceptable en web mapping moderne. Un gain de 72% en temps de chargement transforme un outil inutilisable en application performante.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 35: Perspectives -->
+        <div class="slide">
+            <div class="slide-number">35/35</div>
+            <div class="slide-header">
+                <h2>Perspectives et Ouvertures</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Extensions envisageables</h3>
+                <div class="three-column">
+                    <div class="box">
+                        <h4>WPS avancé</h4>
+                        <ul>
+                            <li>Processus asynchrones</li>
+                            <li>Chaînage de traitements</li>
+                            <li>Parallélisation</li>
+                        </ul>
+                    </div>
+                    <div class="box">
+                        <h4>Big Data</h4>
+                        <ul>
+                            <li>Backend API REST</li>
+                            <li>Base PostGIS</li>
+                            <li>Streaming de données</li>
+                        </ul>
+                    </div>
+                    <div class="box">
+                        <h4>Visualisation 3D</h4>
+                        <ul>
+                            <li>Intégration Cesium</li>
+                            <li>Modèles 3D Tiles</li>
+                            <li>Réalité augmentée</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Applications au contexte marocain</h3>
+                <ul>
+                    <li><strong>Agriculture de précision:</strong> Optimisation irrigation via ensoleillement et précipitations</li>
+                    <li><strong>Gestion hydraulique:</strong> Modélisation bassins versants pour barrages et retenues</li>
+                    <li><strong>Aménagement territorial:</strong> Planification urbaine basée sur orthophotos haute résolution</li>
+                    <li><strong>Énergies renouvelables:</strong> Identification sites optimaux pour parcs solaires</li>
+                    <li><strong>Suivi environnemental:</strong> Surveillance écosystèmes et ressources naturelles</li>
+                </ul>
+
+                <div style="text-align: center; margin-top: 40px; font-size: 1.8em; color: #2a5298; font-weight: bold;">
+                    Merci pour votre attention
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()">◄ Précédent</button>
+        <span style="color: #2a5298; font-weight: 600; padding: 0 20px;">
+            <span id="current">1</span> / <span id="total">35</span>
+        </span>
+        <button class="nav-btn" onclick="nextSlide()">Suivant ►</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('total').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('current').textContent = currentSlide + 1;
+            
+            // Scroll to top of slide content
+            const activeSlide = slides[currentSlide];
+            const slideContent = activeSlide.querySelector('.slide-content');
+            if (slideContent) {
+                slideContent.scrollTop = 0;
+            }
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            }
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            }
+            // Home/End keys
+            if (e.key === 'Home') {
+                e.preventDefault();
+                showSlide(0);
+            }
+            if (e.key === 'End') {
+                e.preventDefault();
+                showSlide(totalSlides - 1);
+            }
+        });
+
+        // Touch support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) nextSlide();
+            if (touchEndX > touchStartX + 50) prevSlide();
+        }
+    </script>
+</body>
+</html>
